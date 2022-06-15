@@ -1,0 +1,1 @@
+export var MENU = "1. Crear tarea\n2. Editar tarea\n3. Borrar tarea\n4. Marcar completado\n5. Mostrar lista de tareas\n6. Mostrar tareas completadas\n7. Mostrar tareas pendientes\n8. Salir.      \nIngrese elecci\u00F3n: ";
