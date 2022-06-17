@@ -16,7 +16,7 @@ import { TodoItemComponent } from './components/todo-item/todo-item.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    // FormsModule
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

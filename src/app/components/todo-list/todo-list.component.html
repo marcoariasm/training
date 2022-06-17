@@ -1,20 +1,29 @@
 <header class="header">
   <div class="header__logo"></div>
-  <div class="header__main"></div>
   <div class="header__user">
     <img src="./assets/me.jfif" alt="Me" />
   </div>
 </header>
 
 <main class="main">
-  <section class="main__upper">
+
+  <section class="main__top">
     <div class="main__title">
       <h1>To Do List</h1>
-      <span>There are {{nTasks}} in the list.</span>
+      <span *ngIf="nTasks === 0; else hasTasks">Empty list. Add some tasks</span>
+      <ng-template #hasTasks>
+        <span>There are {{ nTasks }} tasks in the list.</span>
+      </ng-template>
     </div>
     <div class="main__add-task">
-      <input type="text" name="task" id="" class="input" #txtBuscar (keyup.enter)="crearTarea2()"/>
-      <button class="add" (click)="crearTarea()"><i class="fas fa-plus"></i>Add Task</button>
+      <input type="text" name="task" id="" class="input" #txtTask (keyup.enter)="crearTarea2()"/>
+      <button class="add" (click)="crearTarea()">
+        <i *ngIf="!inEdition; else showIconEdition" class="fas fa-plus"></i>
+        <ng-template #showIconEdition>
+          <i class="fas fa-pencil"></i>
+        </ng-template>
+        Add Task
+      </button>
     </div>
   </section>
 
@@ -22,14 +31,16 @@
     <ul class="list">
       <li *ngFor="let task of list; let i = index" class="item">
         <div class="item__controls--left">
-          <input type="checkbox" name="check" id="" class="item__check">
-          <h3 class="item__id">#<strong>{{ i+1 }}</strong></h3>
-          <span class="item__description">{{ task.task }}</span>
+          <input type="checkbox" name="check" id="" class="item__check" (change)="marcarCompletado(i, $event)" [value]="task.complete">
+          <h3 class="item__id" [ngClass]="{'crossed' : task.complete}">#<strong>{{ i+1 }}</strong></h3>
+          <span class="item__description" [ngClass]="{'crossed' : task.complete}">{{ task.task }}</span>
         </div>
         <div class="item__controls--right">
-          <button class="item__status"><i class="fas fa-circle"></i>{{ task.complete }}</button>
-          <button class="item__edit"><i class="fas fa-trash"></i></button>
-          <button class="item__delete"><i class="fas fa-pencil"></i></button>
+          <button class="item__status" [ngClass]="{'complete': task.complete}">
+            <i class="fas fa-circle dot"></i>{{ task.complete?'Complete':'Pending' }}
+          </button>
+          <!-- <button class="item__edit" (click)="modificarTarea(i)"><i class="fas fa-pencil"></i></button> -->
+          <button class="item__delete" (click)="borrarTarea(i)"><i class="fas fa-trash"></i></button>
         </div>
       </li>
     </ul>
@@ -37,5 +48,5 @@
 </main>
 
 <footer class="footer">
-  <span>dev by Marco Arias &copy; 2022</span>
+  <span></span>
 </footer>
