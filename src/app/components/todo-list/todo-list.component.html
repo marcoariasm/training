@@ -1,0 +1,41 @@
+<header class="header">
+  <div class="header__logo"></div>
+  <div class="header__main"></div>
+  <div class="header__user">
+    <img src="./assets/me.jfif" alt="Me" />
+  </div>
+</header>
+
+<main class="main">
+  <section class="main__upper">
+    <div class="main__title">
+      <h1>To Do List</h1>
+      <span>There are {{nTasks}} in the list.</span>
+    </div>
+    <div class="main__add-task">
+      <input type="text" name="task" id="" class="input" #txtBuscar (keyup.enter)="crearTarea2()"/>
+      <button class="add" (click)="crearTarea()"><i class="fas fa-plus"></i>Add Task</button>
+    </div>
+  </section>
+
+  <section class="main__center">
+    <ul class="list">
+      <li *ngFor="let task of list; let i = index" class="item">
+        <div class="item__controls--left">
+          <input type="checkbox" name="check" id="" class="item__check">
+          <h3 class="item__id">#<strong>{{ i+1 }}</strong></h3>
+          <span class="item__description">{{ task.task }}</span>
+        </div>
+        <div class="item__controls--right">
+          <button class="item__status"><i class="fas fa-circle"></i>{{ task.complete }}</button>
+          <button class="item__edit"><i class="fas fa-trash"></i></button>
+          <button class="item__delete"><i class="fas fa-pencil"></i></button>
+        </div>
+      </li>
+    </ul>
+  </section>
+</main>
+
+<footer class="footer">
+  <span>dev by Marco Arias &copy; 2022</span>
+</footer>
