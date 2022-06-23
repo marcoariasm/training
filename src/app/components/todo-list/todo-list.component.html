@@ -16,7 +16,7 @@
       </ng-template>
     </div>
     <div class="main__add-task">
-      <input type="text" name="task" id="" class="input" #txtTask (keyup.enter)="crearTarea2()"/>
+      <input type="text" name="task" id="" class="input" #txtTask (keyup.enter)="crearTarea()"/>
       <button class="add" (click)="crearTarea()">
         <i *ngIf="!inEdition; else showIconEdition" class="fas fa-plus"></i>
         <ng-template #showIconEdition>

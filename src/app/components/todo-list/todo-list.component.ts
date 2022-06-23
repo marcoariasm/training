@@ -15,10 +15,6 @@ export class TodoListComponent implements OnInit {
   inEdition : boolean = false;
   checkboxValue : boolean = false;
 
-  //   constructor() {
-  //     this.list = [];
-  //   }
-
   ngOnInit(): void {}
 
   crearTarea(): void {
@@ -28,15 +24,6 @@ export class TodoListComponent implements OnInit {
     this.inputTask.nativeElement.value = '';
     this.nTasks = this.list.length;
   }
-
-  crearTarea2(): void {
-    const task = this.inputTask.nativeElement.value;
-    this.list.push({ task, complete: false });
-    // console.log('2',task);
-    this.inputTask.nativeElement.value = '';
-    this.nTasks = this.list.length;
-  }
-
 
   borrarTarea(indexTask: number): void {
     this.list.splice(indexTask, 1);
@@ -60,44 +47,45 @@ export class TodoListComponent implements OnInit {
 
 
 
-  mostrarLista(): string {
-    let mensaje: string = 'Las tareas actuales son:\n';
-    this.list.forEach((item, index) => {
-      mensaje += `${index + 1}  ${item.task} ${
-        item.complete === true ? 'Estado: COMPLETADO' : 'Estado: PENDIENTE'
-      }\n`;
-    });
-    return mensaje;
-  }
+  // mostrarLista(): string {
+  //   let mensaje: string = 'Las tareas actuales son:\n';
+  //   this.list.forEach((item, index) => {
+  //     mensaje += `${index + 1}  ${item.task} ${
+  //       item.complete === true ? 'Estado: COMPLETADO' : 'Estado: PENDIENTE'
+  //     }\n`;
+  //   });
+  //   return mensaje;
+  // }
 
 
-  numeroDeTareas(): number {
-    return this.list.length;
-  }
+  // numeroDeTareas(): number {
+  //   return this.list.length;
+  // }
 
-  mostrarTarea(indexTask: number): string {
-    return `${indexTask} ${this.list[indexTask - 1].task} ${
-      this.list[indexTask - 1].complete === true
-        ? 'Estado: COMPLETADO'
-        : 'Estado: PENDIENTE'
-    }\n`;
-  }
+  // mostrarTarea(indexTask: number): string {
+  //   return `${indexTask} ${this.list[indexTask - 1].task} ${
+  //     this.list[indexTask - 1].complete === true
+  //       ? 'Estado: COMPLETADO'
+  //       : 'Estado: PENDIENTE'
+  //   }\n`;
+  // }
 
-  mostrarTareasCompletadas(complete: boolean): string {
-    let mensaje: string = `Las tareas ${
-      complete ? 'COMPLETADAS' : 'PENDIENTES'
-    } son:\n`;
-    this.list.forEach((item, index) => {
-      if (item.complete === complete) {
-        mensaje += `${index + 1}  ${item.task} ${
-          item.complete ? ' COMPLETADO' : ' PENDIENTE'
-        }\n`;
-      }
-    });
-    return mensaje;
-  }
+  // mostrarTareasCompletadas(complete: boolean): string {
+  //   let mensaje: string = `Las tareas ${
+  //     complete ? 'COMPLETADAS' : 'PENDIENTES'
+  //   } son:\n`;
+  //   this.list.forEach((item, index) => {
+  //     if (item.complete === complete) {
+  //       mensaje += `${index + 1}  ${item.task} ${
+  //         item.complete ? ' COMPLETADO' : ' PENDIENTE'
+  //       }\n`;
+  //     }
+  //   });
+  //   return mensaje;
+  // }
 
   // marcarCompletado(indexTask: number): void {
   //   this.list[indexTask - 1].complete = true;
   // }
+  
 }
