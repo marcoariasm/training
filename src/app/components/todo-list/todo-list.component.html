@@ -31,7 +31,7 @@
     <ul class="list">
       <li *ngFor="let task of list; let i = index" class="item">
         <div class="item__controls--left">
-          <input type="checkbox" name="check" id="" class="item__check" (change)="marcarCompletado(i, $event)" [value]="task.complete">
+          <input type="checkbox" name="check" id="" class="item__check" (change)="marcarCompletado(task.id, $event)" [checked]="task.complete">
           <h3 class="item__id" [ngClass]="{'crossed' : task.complete}">#<strong>{{ i+1 }}</strong></h3>
           <span class="item__description" [ngClass]="{'crossed' : task.complete}">{{ task.task }}</span>
         </div>
@@ -40,7 +40,7 @@
             <i class="fas fa-circle dot"></i>{{ task.complete?'Complete':'Pending' }}
           </button>
           <!-- <button class="item__edit" (click)="modificarTarea(i)"><i class="fas fa-pencil"></i></button> -->
-          <button class="item__delete" (click)="borrarTarea(i)"><i class="fas fa-trash"></i></button>
+          <button class="item__delete" (click)="borrarTarea(task.id)"><i class="fas fa-trash"></i></button>
         </div>
       </li>
     </ul>

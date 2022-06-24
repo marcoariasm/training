@@ -1,11 +1,13 @@
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { NgModule } from '@angular/core';
+import { NgxsModule } from '@ngxs/store';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { TodoItemComponent } from './components/todo-item/todo-item.component';
+import { TodoState } from './state/todo.state';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,10 @@ import { TodoItemComponent } from './components/todo-item/todo-item.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    NgxsModule.forRoot([
+      TodoState
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]
